@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef,Fragment } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
@@ -25,9 +25,14 @@ function NewMeetupForm(props) {
     };
 
     props.onAddMeetup(meetupData);
+    titleInputRef.current.value = '';
+    imageInputRef.current.value = '';
+    addressInputRef.current.value = '';
+    descriptionInputRef.current.value = '';
   }
 
   return (
+    <Fragment>
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
@@ -56,6 +61,8 @@ function NewMeetupForm(props) {
         </div>
       </form>
     </Card>
+    
+    </Fragment>
   );
 }
 
